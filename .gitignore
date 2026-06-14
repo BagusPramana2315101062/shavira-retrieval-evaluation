@@ -1,0 +1,28 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+
+# Local data and generated artifacts
+data/raw/
+storage/
+results/
+results_full/
+results_cache*/
+cache_test*/
+*.log
+excel_export_warning.txt
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# HuggingFace / model cache if placed locally
+.cache/
+models/
