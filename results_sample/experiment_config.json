@@ -1,0 +1,69 @@
+{
+  "data_dir": "data/raw",
+  "output_dir": "results",
+  "jsonl_files": [
+    "jdih_undiksha_ac_id.jsonl",
+    "upttik_undiksha_ac_id.jsonl",
+    "undiksha_ac_id_pmb.jsonl",
+    "undiksha_ac_id_tentang_undiksha.jsonl"
+  ],
+  "validation_file": "Dataset_Validasi_Retrieval_SHAVIRA.xlsx",
+  "mode": "grid_3x3",
+  "chunk_configs": [
+    {
+      "chunk_config_id": "C1",
+      "chunk_size": 256,
+      "chunk_overlap": 32,
+      "chunk_category": "pendek"
+    },
+    {
+      "chunk_config_id": "C2",
+      "chunk_size": 512,
+      "chunk_overlap": 64,
+      "chunk_category": "sedang_baseline"
+    },
+    {
+      "chunk_config_id": "C3",
+      "chunk_size": 768,
+      "chunk_overlap": 96,
+      "chunk_category": "panjang"
+    }
+  ],
+  "eval_k": [
+    5,
+    10
+  ],
+  "candidate_k": 50,
+  "rrf_k": 10,
+  "model_name": "BAAI/bge-m3",
+  "embed_max_length": 512,
+  "embed_batch_size": 8,
+  "bm25_mode": "default",
+  "deduplicate": true,
+  "evaluation_level": "record/context hash",
+  "primary_metrics": [
+    "success_at_k",
+    "mrr_at_k",
+    "ndcg_at_k"
+  ],
+  "supporting_metrics": [
+    "precision_at_k",
+    "recall_at_k"
+  ],
+  "retrieval_methods": [
+    "BM25",
+    "BGE_M3_FAISS",
+    "HYBRID_RRF"
+  ],
+  "index_cache_dir": "storage/faiss_index_cache",
+  "index_cache_paths": {
+    "C1": "storage\\faiss_index_cache\\faiss_model_BAAI_bge-m3_chunk_256_overlap_32_maxlen_512_faiss_IndexFlatIP_dedup_1",
+    "C2": "storage\\faiss_index_cache\\faiss_model_BAAI_bge-m3_chunk_512_overlap_64_maxlen_512_faiss_IndexFlatIP_dedup_1",
+    "C3": "storage\\faiss_index_cache\\faiss_model_BAAI_bge-m3_chunk_768_overlap_96_maxlen_512_faiss_IndexFlatIP_dedup_1"
+  },
+  "force_rebuild_index": false,
+  "generation_eval_enabled": false,
+  "ollama_model": null,
+  "generation_sample_size": null,
+  "generation_top_k": null
+}
